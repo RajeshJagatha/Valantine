@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine Surprise ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ff4e8a, #ff99cc);
+        overflow: hidden;
+        color: white;
+    }
+
+    h1 {
+        margin-top: 100px;
+        font-size: 40px;
+        animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px white; }
+        to { text-shadow: 0 0 20px #fff, 0 0 30px #ffccff; }
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 10px;
+    }
+
+    #yesBtn {
+        background-color: #00ff88;
+        color: black;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+    }
+
+    #noBtn {
+        background-color: #ff3333;
+        color: white;
+        position: absolute;
+    }
+
+    #message {
+        display: none;
+        margin-top: 50px;
+        font-size: 30px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    img {
+        display: none;
+        margin-top: 20px;
+        width: 300px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px white;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        font-size: 20px;
+        animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh); opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+</style>
+</head>
+<body>
+
+<h1>Will You Be My Valentine? 💖</h1>
+
+<div class="buttons">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 😢</button>
+</div>
+</body>
+<body>
+<div id="message">
+    💕 Happy Valentine’s Day my dear wife 💕
+   <h2> You Make My life More Beautiful With Your Presence </h2>
+   <h3>💕 I Love You 💕 </h3>
+</div>
+</body>
+<img id="photo" src="C:\Users\jagat\Desktop\wife.jpg.jpeg" alt="Our Photo">
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+    const photo = document.getElementById("photo");
+
+    const noTexts = [
+        "Think Again 😢",
+        "Don't Say No 😭",
+        "Please Accept ❤️",
+        "Say Yes Please 🥺",
+        "I Love You 💕"
+    ];
+
+    let count = 0;
+
+    noBtn.addEventListener("click", function() {
+        noBtn.innerText = noTexts[count % noTexts.length];
+        count++;
+
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", function() {
+        message.style.display = "block";
+        photo.style.display = "block";
+        document.querySelector(".buttons").style.display = "none";
+    });
+
+    // Floating hearts animation
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
